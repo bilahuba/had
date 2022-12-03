@@ -17,7 +17,7 @@ int j;
 int field[widthField][heightField];
 int x;
 int y;
-int Gy;
+int Gx;
 int head;
 int tail;
 
@@ -32,17 +32,17 @@ void snakeInitialization() {                       // funkce vykreslení hada
 		}
 	}
 
-	x = heightField / 2;                           // vychozi pozice hada
-	y = widthField / 2;
-	Gy = y;
+	y = heightField / 2;                           // vychozi pozice hada
+	x = widthField / 2;
+	Gx = x;
 	head = 5;
 	tail = 1;
 
 
 	for (i = 0; i < head; i++)                    // loop kde se kontroluje delka hada, moc nechapu!!
 	{
-		Gy++;
-		field[x][Gy - head] = i + 1;
+		Gx++;
+		field[y][Gx - head] = i + 1;
 	}
 }
 
