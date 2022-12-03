@@ -9,7 +9,7 @@
 
 using namespace std;
 
-#define widthField 40 // sirka pole
+#define widthField 30 // sirka pole
 #define heightField 20 // vyska pole
 
 int i;
@@ -20,6 +20,32 @@ int y;
 int Gy;
 int head;
 int tail;
+
+
+
+void snakeInitialization() {                       // funkce vykreslení hada
+	for (i = 0; i < heightField; i++)
+	{
+		for (j = 0; j < widthField; j++)
+		{
+			field[i][j] = 0;
+		}
+	}
+
+	x = heightField / 2;                           // vychozi pozice hada
+	y = widthField / 2;
+	Gy = y;
+	head = 5;
+	tail = 1;
+
+
+	for (i = 0; i < head; i++)                    // loop kde se kontroluje delka hada, moc nechapu!!
+	{
+		Gy++;
+		field[x][Gy - head] = i + 1;
+	}
+}
+
 
 void printField() {                            // funkce pro vykreslení čtverce pole
 	for (i = 0; i <= widthField + 1; i++)
@@ -46,20 +72,20 @@ void printField() {                            // funkce pro vykreslení čtverc
 			{
 				printf(" ");
 			}
-			/*
-			if (field[i][j] > 0 && field[i][j] != head)
+			
+			if (field[i][j] > 0 && field[i][j] != head)               // vložení prvního hada
 			{
-				printf("%c", 176);
+				printf("x");
 			}
 			if (field[i][j] == head)
 			{
-				printf("%c", 178);
+				printf("%c", 254);
 			}
 			if (field[i][j] == -1)
 			{
 				printf("%c", 15);
 			}
-			*/
+			
 			if (j == widthField - 1)
 			{
 				printf("%c\n", 186);
@@ -84,30 +110,6 @@ void printField() {                            // funkce pro vykreslení čtverc
 
 
 
-void snakeInitialization() {                       // funkce vykreslení hada
-	for ( i = 0; i < heightField; i++)
-	{
-		for (j = 0; j < widthField; j++)
-		{
-			field[i][j] = 0;
-		}
-	}
-
-	x = heightField / 2;                           // vychozi pozice hada
-	y = widthField / 2;
-	head = 5;
-	tail = 1;
-	Gy = y;
-
-	for ( i = 0; i < head; i++)                    // loop kde se kontroluje delka hada, moc nechapu!!
-	{
-		Gy++;
-		field[x][Gy - head] = i + 1;
-	}
-
-
-
-}
 
 
 
@@ -124,8 +126,9 @@ void ResetScreenPosition()
 
 void main()
 {
-	printField();
 	snakeInitialization();
+	printField();
+
 /*
 	while (Game == 0)
 	{
