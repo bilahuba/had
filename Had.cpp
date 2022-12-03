@@ -46,7 +46,7 @@ void printField() {                            // funkce pro vykreslení čtverc
 			{
 				printf(" ");
 			}
-
+			/*
 			if (field[i][j] > 0 && field[i][j] != head)
 			{
 				printf("%c", 176);
@@ -55,7 +55,11 @@ void printField() {                            // funkce pro vykreslení čtverc
 			{
 				printf("%c", 178);
 			}
-
+			if (field[i][j] == -1)
+			{
+				printf("%c", 15);
+			}
+			*/
 			if (j == widthField - 1)
 			{
 				printf("%c\n", 186);
@@ -122,12 +126,12 @@ void main()
 {
 	printField();
 	snakeInitialization();
-
+/*
 	while (Game == 0)
 	{
 		printf();
 		ResetScreenPosition();
 
 	}
-
+	*/
 }
