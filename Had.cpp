@@ -24,7 +24,7 @@ void main()
 			printf("%c", 201);
 		}
 		else if (i == A+1) {
-			printf(" %C", 187);
+			printf("%C", 187);
 		}
 		else
 		{
@@ -54,7 +54,7 @@ void main()
 			printf("%c", 200);
 		}
 		else if (i == A + 1) {
-			printf(" %C", 188);
+			printf("%C", 188);
 		}
 		else
 		{
