@@ -82,6 +82,13 @@ void ResetScreenPosition()
 void main(){
 	printField();
 	snakeInitialization();
+	
+	while (Game == 0)
+	{
+		printf();
+		ResetScreenPosition();
+
+	}
 
 }
 
