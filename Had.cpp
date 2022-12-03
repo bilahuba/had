@@ -17,9 +17,13 @@ int j;
 int field[widthField][heightField];
 int x;
 int y;
-int Gx;
+int Gy;
 int head;
 int tail;
+int game;
+int fruit;
+int randomA;
+int randomB;
 
 
 
@@ -32,17 +36,19 @@ void snakeInitialization() {                       // funkce vykreslení hada
 		}
 	}
 
-	y = heightField / 2;                           // vychozi pozice hada
-	x = widthField / 2;
-	Gx = x;
+	x = heightField / 2;                           // vychozi pozice hada
+	y = widthField / 2;
+	Gy = y;
 	head = 5;
 	tail = 1;
+	game = 0;
+	fruit = 0;
 
 
 	for (i = 0; i < head; i++)                    // loop kde se kontroluje delka hada, moc nechapu!!
 	{
-		Gx++;
-		field[y][Gx - head] = i + 1;
+		Gy++;
+		field[x][Gy - head] = i + 1;
 	}
 }
 
@@ -67,7 +73,8 @@ void printField() {                            // funkce pro vykreslení čtverc
 	{
 		printf("%c", 186);
 
-		for (j = 0; j < widthField; j++) {
+		for (j = 0; j < widthField; j++)
+		{
 			if (field[i][j]==0)
 			{
 				printf(" ");
@@ -90,6 +97,12 @@ void printField() {                            // funkce pro vykreslení čtverc
 			{
 				printf("%c\n", 186);
 			}
+			if (field[i][j] == -1)
+			{
+				printf("L");
+			}
+		
+		
 		} 
 	}
 
@@ -108,7 +121,18 @@ void printField() {                            // funkce pro vykreslení čtverc
 	}
 }
 
+void randomFruit() {                               // nahodna pozice ovoce
+	randomA = 1 + rand() % 18;
+	randomB = 1 + rand() % 28;
 
+	if (fruit == 0 && field[randomA][randomB] == 0)
+	{
+		field[randomA][randomB] = -1;
+		fruit = 1;
+	}
+
+
+}
 
 
 
@@ -127,14 +151,15 @@ void ResetScreenPosition()
 void main()
 {
 	snakeInitialization();
-	printField();
+	
 
-/*
-	while (Game == 0)
+
+	while (game == 0)
 	{
-		printf();
+		printField();
 		ResetScreenPosition();
+		randomFruit();
 
 	}
-	*/
+	
 }
