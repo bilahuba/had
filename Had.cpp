@@ -6,10 +6,11 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <ctime>
 
 using namespace std;
 
-#define widthField 30 // sirka pole
+#define widthField 40 // sirka pole
 #define heightField 20 // vyska pole
 
 int i;
@@ -36,8 +37,8 @@ void snakeInitialization() {                       // funkce vykreslení hada
 		}
 	}
 
-	x = heightField / 2;                           // vychozi pozice hada
-	y = widthField / 2;
+	x = (heightField / 2);                           // vychozi pozice hada
+	y = (widthField / 2);
 	Gy = y;
 	head = 5;
 	tail = 1;
@@ -48,7 +49,7 @@ void snakeInitialization() {                       // funkce vykreslení hada
 	for (i = 0; i < head; i++)                    // loop kde se kontroluje delka hada, moc nechapu!!
 	{
 		Gy++;
-		field[x][Gy - head] = i + 1;
+		field[x][Gy-head] = i + 1;
 	}
 }
 
@@ -90,16 +91,12 @@ void printField() {                            // funkce pro vykreslení čtverc
 			}
 			if (field[i][j] == -1)
 			{
-				printf("%c", 15);
+				printf("O");
 			}
 			
 			if (j == widthField - 1)
 			{
 				printf("%c\n", 186);
-			}
-			if (field[i][j] == -1)
-			{
-				printf("L");
 			}
 		
 		
@@ -121,23 +118,23 @@ void printField() {                            // funkce pro vykreslení čtverc
 	}
 }
 
-void randomFruit() {                               // nahodna pozice ovoce
+void randomFruit() {                                   // nahodna pozice ovoce
+	srand(time(0));                      
 	randomA = 1 + rand() % 18;
 	randomB = 1 + rand() % 28;
+
 
 	if (fruit == 0 && field[randomA][randomB] == 0)
 	{
 		field[randomA][randomB] = -1;
 		fruit = 1;
 	}
-
+	
 
 }
 
 
-
-
-void ResetScreenPosition()
+void ResetScreenPosition()                            // zakotvení obrazu při obnovování
 {
 	HANDLE hOut;
 	COORD Position;
@@ -151,8 +148,6 @@ void ResetScreenPosition()
 void main()
 {
 	snakeInitialization();
-	
-
 
 	while (game == 0)
 	{
