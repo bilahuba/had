@@ -14,7 +14,12 @@ using namespace std;
 
 int i;
 int j;
-int pole[widthField][heightField];
+int field[widthField][heightField];
+int x;
+int y;
+int Gy;
+int head;
+int tail;
 
 void printField() {                            // funkce pro vykreslení čtverce pole
 	for (i = 0; i <= widthField + 1; i++)
@@ -35,16 +40,27 @@ void printField() {                            // funkce pro vykreslení čtverc
 	for (i = 0; i < heightField; i++)
 	{
 		printf("%c", 186);
+
 		for (j = 0; j < widthField; j++) {
-			if (j == widthField - 1)
-			{
-				printf(" %c\n", 186);
-			}
-			else
+			if (field[i][j]==0)
 			{
 				printf(" ");
 			}
-		}
+
+			if (field[i][j] > 0 && field[i][j] != head)
+			{
+				printf("%c", 176);
+			}
+			if (field[i][j] == head)
+			{
+				printf("%c", 178);
+			}
+
+			if (j == widthField - 1)
+			{
+				printf("%c\n", 186);
+			}
+		} 
 	}
 
 	for (i = 0; i <= widthField + 1; i++)
@@ -65,10 +81,30 @@ void printField() {                            // funkce pro vykreslení čtverc
 
 
 void snakeInitialization() {                       // funkce vykreslení hada
+	for ( i = 0; i < heightField; i++)
+	{
+		for (j = 0; j < widthField; j++)
+		{
+			field[i][j] = 0;
+		}
+	}
+
+	x = heightField / 2;                           // vychozi pozice hada
+	y = widthField / 2;
+	head = 5;
+	tail = 1;
+	Gy = y;
+
+	for ( i = 0; i < head; i++)                    // loop kde se kontroluje delka hada, moc nechapu!!
+	{
+		Gy++;
+		field[x][Gy - head] = i + 1;
+	}
 
 
 
 }
+
 
 
 void ResetScreenPosition()
@@ -82,10 +118,11 @@ void ResetScreenPosition()
 }
 
 
-void main(){
+void main()
+{
 	printField();
 	snakeInitialization();
-	
+
 	while (Game == 0)
 	{
 		printf();
@@ -94,4 +131,3 @@ void main(){
 	}
 
 }
-
