@@ -144,7 +144,7 @@ void printField()				// funkce pro vykreslení čtverce pole a hada
 }
 
 
-void resetScreenPosition()
+void resetScreenPosition()                                                    // zakotvení obrazu při obnovování
 {
 	HANDLE hOut;
 	COORD Position;
@@ -154,7 +154,7 @@ void resetScreenPosition()
 	SetConsoleCursorPosition(hOut, Position);
 }
 
-void random()
+void random()                                                                // funkce pro random spawnutí ovoce
 {
 	srand(time(0));
 	a = 1 + rand() % 18;
@@ -167,7 +167,7 @@ void random()
 	}
 }
 
-int getch_noblock()
+int getch_noblock()                                                          // funkce zjišťování zda je stisknuta klávesa
 {
 	if (_kbhit())
 		return _getch();
@@ -198,7 +198,7 @@ void gameOver()
 	game = 1;
 }
 
-void movement()
+void movement()                                                             // pohyby hada
 {
 	var = getch_noblock();
 	var = tolower(var);
@@ -311,7 +311,7 @@ void movement()
 	}
 }
 
-void tailRemove()
+void tailRemove()                                                       // odmazávání ocasu hada
 {
 	for (i = 0; i < heightField; i++)
 	{
