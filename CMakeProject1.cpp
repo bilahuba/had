@@ -358,12 +358,12 @@ void setupSpeed()
 {
 	if (difficultness == 1)
 	{
-		speed = 120;
+		speed = 100;
 	}
 
 	if (difficultness == 2)
 	{
-		speed = 85;
+		speed = 80;
 	}
 
 	if (difficultness == 3)
@@ -372,11 +372,11 @@ void setupSpeed()
 	}
 	if (difficultness == 4)
 	{
-		speed = 10;
+		speed = 30;
 	}
 	if (difficultness == 5)
 	{
-		speed == 0.3;
+		speed == 15;
 	}
 }
 
