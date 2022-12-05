@@ -199,11 +199,11 @@ void gameOver()                            // konec hry
 	Sleep(1500);
 	system("cls");                         // smazat obrazovku
 
+	FILE* f;
 
-	FILE* f;                               // zapis jmena a skore
 	f = fopen("score.txt", "a");
-
-	fprintf(f, "%s:  %d\n", name, score);
+	
+	fprintf(f, "%s:  %d\n", name, score);                  // zapis jmena a skore
 
 	fclose(f);
 
@@ -217,6 +217,7 @@ void gameOver()                            // konec hry
 	char line[MAX_LINE_LENGTH];
 	f = fopen("score.txt", "r");
 	
+
 	while (fgets(line, MAX_LINE_LENGTH, f)) {
 		printf(line);
 	}
@@ -388,7 +389,7 @@ int main()
 	printf("\n1. Easy\n2. Medium\n3. Hard\n4. Hardcore\n5. Nightmare\n\n");
 	printf("zadej obtiznost:  ");
 	scanf_s("%d", &difficultness);
-	printf("\n;");
+	printf("\n");
 
 
 	setupSpeed();                                        // probehne nastaveni rychlosti
